@@ -35,3 +35,11 @@ const port = process.env.PORT || 3000
 app.listen(port, () => {
     console.log('Listening on port ' + port)
 })
+
+server.on('error', (err) => {
+    if (err.code === 'EADDRINUSE') {
+        console.error(`Port ${port} is already in use`)
+    } else {
+        console.error('server error:', err.message)
+    }
+})
