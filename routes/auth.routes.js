@@ -28,7 +28,39 @@ router.post('/sign-up', async (req, res) => {
         await User.create(newUser)
         res.redirect('/auth/login')
     } catch (error) {
-        console.log('Sign-up error: ', error)
+        console.error('Sign-up error: ', error)
         res.render('auth/sign-up', {error: 'Something went wrong. Please try again'})
     }
 })
+
+router.get('/login', (req,res) => {
+    res.render('auth/login.ejs', {error: null})
+})
+
+router.post('/login', async(req,res) => {
+    try {
+        const userInDatabase = await User.findOne(({username: req.body.username}))
+        if (!userInDatabase) {
+            return res.render('auth/login', {error: 'Username bot found'})
+        }
+        const validPassword = bcrypt.compareSync(req.body.password, userInDatabase.password)
+        if (!validPassword) {
+            return res.render('auth/login', {error: 'Incorrect password'})
+        }
+        req.session.user = {
+            username: userInDatabase.username,
+            _id: userInDatabase._id
+        }
+        res.redirect('/')
+    } catch (error) {
+        console.error('Error during sign-in:', error)
+        res.render('auth/sign-in',{error: 'An unxpected error occured'})
+    }
+})
+
+router.get('/logout', (req,res) => {
+    req.session.destroy()
+    res.redirect('/auth/login')
+})
+
+module.exports = router
