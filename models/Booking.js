@@ -1,11 +1,22 @@
 const mongoose = require('mongoose')
+const {Schema} = mongoose
 
 const bookingSchema = new mongoose.Schema({
-    // movieName: //getting the movie name from the movie schema
-    date: {
-        type: Date,
+    user: {
+        type: Schema.Types.ObjectId,
+        ref: 'User',
         required: true
     },
-    // movieTime: // getting the choosen movie time from the user
-
+    movie: {
+        type: Schema.Types.ObjectId,
+        ref: 'Movie',
+        required: true
+    },
+    bookingDate: {
+        type: Date,
+        default: Date.now
+    }
 })
+
+const Booking = mongoose.model('Booking', bookingSchema)
+module.exports = Booking
