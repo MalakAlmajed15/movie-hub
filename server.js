@@ -24,11 +24,17 @@ app.use(
 }))
 app.use(passUserToView)
 app.set('view engine', 'ejs')
+app.set('views', __dirname + '/views')
 
 // connecting to database
 connectToDB()
 
 app.use('/auth', authRoutes)
+
+app.get('/home', (req,res) => {
+  res.render('partials/home')
+})
+
 app.use(isSignedIn)
 
 // listening to port 3000
