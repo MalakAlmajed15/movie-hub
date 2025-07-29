@@ -10,13 +10,19 @@ const session = require('express-session')
 const passUserToView = require('./middleware/passUserToView')
 const isSignedIn = require('./middleware/isSignedIn')
 
-
-
 //middleware
 app.use(express.static('public'))
 app.use(express.urlencoded({extended: true}))
 app.use(methodOverride('_method'))
 app.use(morgan('dev'))
+app.use(
+    session({
+    secret: process.env.SESSION_SECRET,
+    resave: false,
+    saveUninitialized: true,
+}))
+app.use(passUserToView)
+app.set('view engine', 'ejs')
 
 // connecting to database
 connectToDB()
