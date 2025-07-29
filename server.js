@@ -5,6 +5,12 @@ const dotenv = require('dotenv').config()
 const morgan = require('morgan')
 const methodOverride = require('method-override')
 const connectToDB = require('./config/db')
+const authRoutes = require('./routes/auth.routes')
+const session = require('express-session')
+const passUserToView = require('./middleware/passUserToView')
+const isSignedIn = require('./middleware/isSignedIn')
+
+
 
 //middleware
 app.use(express.static('public'))
