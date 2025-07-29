@@ -9,7 +9,16 @@
     <%- incluse('../partials/navbar')%>
     <h1>Log in</h1>
     <form action="/auth/login" method="">
+        <label for="username">username:</label>
+        <input type="text" name="username" id="username">
 
+        <label for="password">password:</label>
+        <input type="password" name="password" id="password">
+
+        <button>Login</button>
     </form>
+    <% if (error) { %>
+    <p class="error"><%= error %></p>
+    <% } %>
 </body>
 </html>
