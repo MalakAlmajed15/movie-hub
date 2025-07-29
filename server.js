@@ -9,7 +9,7 @@ const authRoutes = require('./routes/auth.routes')
 const session = require('express-session')
 const passUserToView = require('./middleware/passUserToView')
 const isSignedIn = require('./middleware/isSignedIn')
-
+const bcrypt = require('bcrypt')
 //middleware
 app.use(express.static('public'))
 app.use(express.urlencoded({extended: true}))
@@ -36,10 +36,10 @@ app.listen(port, () => {
     console.log('Listening on port ' + port)
 })
 
-server.on('error', (err) => {
-    if (err.code === 'EADDRINUSE') {
-        console.error(`Port ${port} is already in use`)
-    } else {
-        console.error('server error:', err.message)
-    }
+server.on("error", (err) => { 
+  if (err.code === "EADDRINUSE") {
+    console.error(` Port ${port} is already in use.`);
+  } else {
+    console.error(" Server error:", err.message);
+  }
 })
