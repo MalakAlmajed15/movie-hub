@@ -22,5 +22,14 @@ router.get('/bookingDetails', async (req, res) => {
 })
 
 // edit bookings
-router.
+router.get('/updateBooking/:id', async (req, res) => {
+    const foundBooking = await Booking.findById(req.params.id)
+    res.render('bookings/editBooking.ejs', {foundBooking})
+})
+
+router.post('/:id', async (req, res) => {
+    const updatedBooking = await Booking.findByIdAndUpdate(req.params.id, req.body)
+    res.redirect('/bookings/bookingDetails')
+})
+
 module.exports = router
