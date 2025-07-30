@@ -6,6 +6,34 @@
     <title>Document</title>
 </head>
 <body>
-    <!--popup with the timing and date of the movie-->
+    <div id="bookingModal" class="modal" >
+    <div class="modal-content" >
+    <span id="closeModal">&times;</span>
+    
+    <h2>Book <%= movie.name %></h2>
+    <img src="<%= movie.image %>" alt="<%= movie.name %>" >
+    
+    <form action="/bookings" method="POST">
+      <input type="hidden" name="movieId" value="<%= movie._id %>">
+      
+      <label for="date">Select Date:</label>
+      <input type="date" name="date" required >
+      <br>
+      <br>
+      <label for="time">Select Time:</label>
+      <select name="time" required >
+        <option value="">--Select Time--</option>
+        <option value="1:00 PM">1:00 PM</option>
+        <option value="3:30 PM">3:30 PM</option>
+        <option value="6:00 PM">6:00 PM</option>
+        <option value="8:30 PM">8:30 PM</option>
+      </select>
+      <br>
+      <br>
+      <button type="submit">Confirm Booking</button>
+    </form>
+  </div>
+</div>
+<!-- script for the popup -->
 </body>
 </html>
