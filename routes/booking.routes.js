@@ -32,13 +32,21 @@ router.get('/updateBooking/:id', async (req, res) => {
 })
 
 router.post('/:id', async (req, res) => {
-    const updatedBooking = await Booking.findByIdAndUpdate(req.params.id, req.body)
-    res.redirect('/bookings/bookingDetails')
+    try {
+        const updatedBooking = await Booking.findByIdAndUpdate(req.params.id, req.body)
+        res.redirect('/bookings/bookingDetails')
+    } catch (error) {
+        console.log(error)
+    }
 })
 
 router.delete('/:id', async (req, res) => {
-    const deletedBooking = await Booking.findByIdAndDelete(req.params.id)
-    res.redirect('/bookings/allBookings')
+    try {
+        const deletedBooking = await Booking.findByIdAndDelete(req.params.id)
+        res.redirect('/bookings/allBookings')
+    } catch (error) {
+        console.log(error)
+    }
 })
 
 module.exports = router
