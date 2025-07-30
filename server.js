@@ -10,6 +10,7 @@ const session = require('express-session')
 const passUserToView = require('./middleware/passUserToView')
 const isSignedIn = require('./middleware/isSignedIn')
 const bcrypt = require('bcrypt')
+const homeRoures = require('./routes/home.routes')
 
 //middleware
 app.use(express.static('public'))
@@ -26,13 +27,19 @@ app.use(passUserToView)
 app.set('view engine', 'ejs')
 app.set('views', __dirname + '/views')
 
+app.use((req, res, next) => {
+  res.locals.user = req.session.user;
+  next();
+});
+
+
 // connecting to database
 connectToDB()
-
+app.use('/',homeRoures)
 app.use('/auth', authRoutes)
 
 app.get('/home', (req,res) => {
-  res.render('partials/home')
+  res.render('home.ejs')
 })
 
 app.use(isSignedIn)

@@ -1,9 +1,15 @@
 const router = require("express").Router()
 
-router.get('/home', (req, res) {
+router.get('/home', (req, res) => {
     res.render('home')
 })
 
 router.post('/home', async (req, res) => {
-    res.redirect('/views/home.ejs')
+    try {
+        res.redirect('/views/home.ejs')
+    } catch (error) {
+        console.log(error)
+    }   
 })
+
+module.exports = router

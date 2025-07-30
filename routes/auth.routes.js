@@ -2,6 +2,7 @@ const router = require("express").Router()
 const User = require("../models/User")
 const bcrypt = require("bcrypt")
 
+
 router.get("/sign-up", (req, res) => {
     res.render("auth/sign-up.ejs", { error: null })
 })
@@ -18,13 +19,6 @@ router.post("/sign-up", async (req, res) => {
             });
         }
 
-        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-        if (!emailRegex.test(email)) {
-            return res.render("auth/sign-up", {
-                error: "Please enter a valid email address."
-            });
-        }
-
         if (password.length < 6) {
             return res.render("auth/sign-up", {
                 error: "Password must be at least 6 characters long."
@@ -34,7 +28,7 @@ router.post("/sign-up", async (req, res) => {
         // Do we already have this person in our database?
         const existingUser = await User.findOne({ username });
         if (existingUser) {
-            return res.render("auth/sign-up", {
+            return res.render("auth/sign-up.ejs", {
                 error: "Username is already taken."
 
             });
@@ -55,7 +49,7 @@ router.post("/sign-up", async (req, res) => {
 
     } catch (error) {
         console.error("Sign-up error:", error);
-        res.render("auth/sign-up", {
+        res.render("auth/sign-up.ejs", {
             error: "Something went wrong. Please try again."
         });
     }
@@ -89,10 +83,11 @@ router.post("/login", async (req, res) => {
             _id: userInDatabase._id,
         };
 
-        res.redirect("/home.ejs");
+        res.redirect('/home');
+
     } catch (error) {
         console.error("Error during sign-in:", error);
-        res.render("auth/sign-in", { error: "An unexpected error occurred." });
+        res.render("auth/sign-in.ejs", { error: "An unexpected error occurred." });
     }
 });
 
@@ -103,4 +98,4 @@ router.get("/logout", (req, res) => {
     res.redirect("/auth/login")
 })
 
-module.exports = router
+module.exports = router 
