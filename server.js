@@ -11,6 +11,7 @@ const passUserToView = require('./middleware/passUserToView')
 const isSignedIn = require('./middleware/isSignedIn')
 const bcrypt = require('bcrypt')
 const homeRoures = require('./routes/home.routes')
+const movieRoutes = require('./routes/movie.routes')
 
 //middleware
 app.use(express.static('public'))
@@ -37,12 +38,9 @@ app.use((req, res, next) => {
 connectToDB()
 app.use('/',homeRoures)
 app.use('/auth', authRoutes)
+app.use('/movies', movieRoutes)
 
-app.get('/home', (req,res) => {
-  res.render('home.ejs')
-})
-
-app.use(isSignedIn)
+// app.use(isSignedIn)
 
 // listening to port 3000
 const port = process.env.PORT || 3000
