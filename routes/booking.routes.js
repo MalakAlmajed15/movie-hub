@@ -5,10 +5,11 @@ const Movie = require('../models/Movie')
 // all bookings
 router.get('/allBookings', async (req, res) => {
     try {
-        const allBookings = await Booking.find()
+        const allBookings = await Booking.find({ user: req.session.user._id }).populate('movie')
         res.render('bookings/allBookings.ejs', {allBookings})
     } catch (error) {
-       console.log(error) 
+       console.error(error)
+       res.redirect('/home') 
     }
 })
 

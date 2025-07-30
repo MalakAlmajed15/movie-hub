@@ -6,7 +6,29 @@
     <title>Booking Details</title>
 </head>
 <body>
+    <%- include('../partials/navbar') %>
+
+  <div class="container">
     <h1>Booking Details</h1>
-    <!--username, movie name, date, time-->
+
+    <% if (booking && booking.movie) { %>
+      <div class="booking-card" >
+        <img src="<%= booking.movie.image %>" alt="<%= booking.movie.name %>" >
+        <h2><%= booking.movie.name %></h2>
+        <p>Description: <%= booking.movie.description %></p>
+        <p>Language: <%= booking.movie.language %></p>
+        <p>Release Date: <%= booking.movie.releaseDate.toDateString() %></p>
+        <p>Booking Date: <%= booking.bookingDate.toDateString() %></p>
+      </div>
+    <% } else { %>
+      <p>Booking details not found.</p>
+    <% } %>
+
+    <!-- <a href="/bookings/all">
+      <button >Back to All Bookings</button>
+    </a> -->
+  </div>
+
+  <%- include('../partials/footer') %>
 </body>
 </html>
