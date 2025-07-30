@@ -12,6 +12,7 @@ const isSignedIn = require('./middleware/isSignedIn')
 const bcrypt = require('bcrypt')
 const homeRoures = require('./routes/home.routes')
 const movieRoutes = require('./routes/movie.routes')
+const bookingRoutes = require('./routes/booking.routes')
 
 //middleware
 app.use(express.static('public'))
@@ -39,6 +40,7 @@ connectToDB()
 app.use('/',homeRoures)
 app.use('/auth', authRoutes)
 app.use('/movies', movieRoutes)
+app.use('/bookings', bookingRoutes)
 
 // app.use(isSignedIn)
 
