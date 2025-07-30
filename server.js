@@ -13,6 +13,7 @@ const bcrypt = require('bcrypt')
 const homeRoures = require('./routes/home.routes')
 const movieRoutes = require('./routes/movie.routes')
 const bookingRoutes = require('./routes/booking.routes')
+const profileRoutes = require('./routes/profile.routes')
 
 //middleware
 app.use(express.static('public'))
@@ -41,6 +42,8 @@ app.use('/',homeRoures)
 app.use('/auth', authRoutes)
 app.use('/movies', movieRoutes)
 app.use('/bookings', bookingRoutes)
+// app.use('/auth/profile', profileRoutes)
+app.use('/profile', profileRoutes)
 
 // app.use(isSignedIn)
 

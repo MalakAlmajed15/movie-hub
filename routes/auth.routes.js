@@ -10,9 +10,6 @@ router.get("/sign-up", (req, res) => {
 router.post("/sign-up", async (req, res) => {
     try {
         const { username, password } = req.body;
-
-        // VALIDATION
-        //  Check if all the necessary fields are there
         if (!username || !password) {
             return res.render("auth/sign-up", {
                 error: "All fields are required."
@@ -25,7 +22,6 @@ router.post("/sign-up", async (req, res) => {
             });
         }
 
-        // Do we already have this person in our database?
         const existingUser = await User.findOne({ username });
         if (existingUser) {
             return res.render("auth/sign-up.ejs", {
@@ -34,8 +30,6 @@ router.post("/sign-up", async (req, res) => {
             });
         }
 
-
-        // Hash password and create user
         const hashedPassword = bcrypt.hashSync(password, 10);
         const newUser = {
             username,
@@ -44,7 +38,6 @@ router.post("/sign-up", async (req, res) => {
 
         await User.create(newUser);
 
-        // Redirect to Login
         res.redirect("/auth/login");
 
     } catch (error) {

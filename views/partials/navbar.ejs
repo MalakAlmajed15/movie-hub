@@ -1,13 +1,14 @@
 <header>
     <% if (user){ %>
-    <p>Welcome, <%= user.username %></p>
+    <p>MOVIE HUB</p>
     <a href="/home">Home</a>
     <a href="/movies/allMovies">Movies</a>
+    <a href="/profile">Profile</a>
     <a href="/auth/logout">Logout</a>
     
     <%} else{ %>
-    <a href="/auth/login">Login</a>
     <a href="/auth/sign-up">Sign Up</a>
+    <a href="/auth/login">Login</a>
     <%} %> 
 </header>
 

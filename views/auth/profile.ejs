@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile</title>
+</head>
+<body>
+    <%- include('../partials/navbar')%>
+    <div class="profile-container">
+        <h1>Username: <%= user.username%></h1>
+        <h2>Your Bookings</h2>
+        <% if (bookings && bookings.length > 0) { %>
+            <ul>
+                <% bookings.forEach(booking => { %>
+                    <li><h3><%= booking.movie.name %></h3>
+                    <img src="<%= booking.movie.image %>" alt="<%= booking.movie.name %>">
+                    <p>Description: <%= booking.movie.description %></p>
+                    <p>Language: <%= booking.movie.language %></p>
+                    <p>Release Date: <%= booking.movie.releaseDate.toDateString() %></p>
+                    <p>Booking Date: <%= booking.bookingDate.toDateString() %></p>
+                    </li>
+                    <%})%>
+            </ul>
+        <% } else {%>
+            <p>You haven't booked any movies yet.</p>
+            <% } %>
+    </div>
+    <%- include('../partials/footer')%>
+</body>
+</html>

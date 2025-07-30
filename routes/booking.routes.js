@@ -1,5 +1,6 @@
 const router = require('express').Router()
 const Booking = require('../models/Booking')
+const Movie = require('../models/Movie')
 
 // all bookings
 router.get('/allBookings', async (req, res) => {
@@ -48,6 +49,31 @@ router.delete('/:id', async (req, res) => {
         res.redirect('/bookings/allBookings')
     } catch (error) {
         console.log(error)
+    }
+})
+
+// create a route for adding a new booking
+router.get('/newBooking', async (req,res) => {
+    try {
+        const movie = await Movie.findById(movieId)
+        res.render('bookings/newBooking', {movie})
+    } catch (error) {
+        console.error(error)
+        res.redirect('/home')
+    }
+})
+
+router.post('/', async (req, res) => {
+    try {
+        const {movieId} = req.body
+        await Booking.create({
+            user: req.session.user._id,
+            movie: movieId
+        })
+        res.redirect('/home')
+    } catch (error) {
+        console.error(error)
+        res.redirect('/home')
     }
 })
 

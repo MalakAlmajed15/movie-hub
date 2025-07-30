@@ -3,9 +3,27 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Movie name</title>
+    <title><%= movie.name %></title>
 </head>
 <body>
-    <!--Add the movie image, name, description, release date and language and book now button-->
+    <%- include('../partials/navbar') %>
+
+    <div class="movie-details">
+    <h1><%= movie.name %></h1>
+    
+    <% if (movie.image) { %>
+      <img src="<%= movie.image %>" alt="<%= movie.name %>">
+    <% } %>
+
+    <p>Description: <%= movie.description %></p>
+    <p>Release Date: <%= movie.releaseDate.toDateString() %></p>
+    <p>Language: <%= movie.language %></p>
+
+    <a href="/bookings/newBooking?movieId=<%= movie._id %>">
+      <button>Book Now</button>
+    </a>
+  </div>
+
+  <%- include('../partials/footer') %>
 </body>
 </html>

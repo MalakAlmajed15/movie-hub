@@ -21,4 +21,10 @@ router.get('/movieDetails', async (req, res) => {
     }
 })
 
+router.get('/:id', async (req, res) => {
+  const movie = await Movie.findById(req.params.id)
+  res.render('movies/movieDetails', { movie })
+})
+
+
 module.exports = router
