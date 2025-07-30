@@ -23,13 +23,22 @@ router.get('/bookingDetails', async (req, res) => {
 
 // edit bookings
 router.get('/updateBooking/:id', async (req, res) => {
-    const foundBooking = await Booking.findById(req.params.id)
-    res.render('bookings/editBooking.ejs', {foundBooking})
+    try {
+        const foundBooking = await Booking.findById(req.params.id)
+        res.render('bookings/editBooking.ejs', {foundBooking})
+    } catch (error) {
+        console.log(error)
+    }
 })
 
 router.post('/:id', async (req, res) => {
     const updatedBooking = await Booking.findByIdAndUpdate(req.params.id, req.body)
     res.redirect('/bookings/bookingDetails')
+})
+
+router.delete('/:id', async (req, res) => {
+    const deletedBooking = await Booking.findByIdAndDelete(req.params.id)
+    res.redirect('/bookings/allBookings')
 })
 
 module.exports = router
