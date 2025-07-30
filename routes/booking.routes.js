@@ -31,6 +31,7 @@ router.get('/updateBooking/:id', async (req, res) => {
     }
 })
 
+// updating the booking 
 router.post('/:id', async (req, res) => {
     try {
         const updatedBooking = await Booking.findByIdAndUpdate(req.params.id, req.body)
@@ -40,6 +41,7 @@ router.post('/:id', async (req, res) => {
     }
 })
 
+// deleting the booking
 router.delete('/:id', async (req, res) => {
     try {
         const deletedBooking = await Booking.findByIdAndDelete(req.params.id)
