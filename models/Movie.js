@@ -1,4 +1,5 @@
 const mongoose = require('mongoose')
+const { format } = require('morgan')
 
 const movieSchema = new mongoose.Schema({
     name: {
@@ -9,8 +10,8 @@ const movieSchema = new mongoose.Schema({
         type: String
     },
     releaseDate: {
-        type: Date,
-        required: true
+        type: String,
+        required: true,
     },
     description: {
         type: String,

@@ -16,10 +16,10 @@
     <% } %>
 
     <p>Description: <%= movie.description %></p>
-    <p>Release Date: <%= movie.releaseDate.toDateString() %></p>
+    <p>Release Date: <%= movie.releaseDate%></p>
     <p>Language: <%= movie.language %></p>
 
-    <a href="/bookings/newBooking?movieId=<%= movie._id %>">
+    <a href="bookings/newBooking.ejs">
       <button>Book Now</button>
     </a>
   </div>

@@ -15,14 +15,14 @@
         <h2><%= booking.movie.name %></h2>
         <p>Description: <%= booking.movie.description %></p>
         <p>Language: <%= booking.movie.language %></p>
-        <p>Release Date: <%= booking.movie.releaseDate.toDateString() %></p>
+        <p>Release Date: <%= new Date(booking.movie.releaseDate).toLocaleDateString()%></p>
         <p>Booking Date: <%= booking.bookingDate.toDateString() %></p>
       </div>
     <% } else { %>
       <p>Booking details not found.</p>
     <% } %>
 
-    <!-- <a href="/bookings/all">
+    <!-- <a href="/bookings/allBookings">
       <button >Back to All Bookings</button>
     </a> -->
   </div>

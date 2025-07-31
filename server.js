@@ -42,7 +42,6 @@ app.use('/',homeRoures)
 app.use('/auth', authRoutes)
 app.use('/movies', movieRoutes)
 app.use('/bookings', bookingRoutes)
-// app.use('/auth/profile', profileRoutes)
 app.use('/profile', profileRoutes)
 
 // app.use(isSignedIn)
