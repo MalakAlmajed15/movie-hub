@@ -1,12 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Bookings</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My Bookings</title>
 </head>
 <body>
-    <%- include('../partials/navbar') %>
+  <%- include('../partials/navbar') %>
 
   <div class="booking-details">
     <h1>My Bookings</h1>
@@ -14,12 +14,20 @@
     <% if (allBookings.length > 0) { %>
       <div class="booking-container">
         <% allBookings.forEach(booking => { %>
-          <div >
+          <div>
             <img src="<%= booking.movie.image %>" alt="<%= booking.movie.name %>">
             <h3><%= booking.movie.name %></h3>
             <p>Language: <%= booking.movie.language %></p>
-            <p>Release Date: <%= booking.movie.releaseDate.toDateString() %></p>
-            <p>Booked On: <%= booking.bookingDate.toDateString() %></p>
+
+            <p>
+              Release Date:
+              <%= booking.movie.releaseDate%>
+            </p>
+
+            <p>
+              Booked On:
+              <%= booking.bookingDate%>
+            </p>
           </div>
         <% }) %>
       </div>

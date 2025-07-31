@@ -11,12 +11,6 @@ const bookingSchema = new mongoose.Schema({
         ref: 'Movie',
         required: true
     },
-    bookingDate: {
-        type: String,
-        required: true,
-        default:Date.now()
-
-    },
     date: {
         type: String,
         required: true
@@ -24,8 +18,12 @@ const bookingSchema = new mongoose.Schema({
     time: {
         type: String,
         required: true
+    },
+    bookingDate: {
+        type: Date,
+        default: Date.now
     }
-})
+ },{timestamps: true})
 
 const Booking = mongoose.model('Booking', bookingSchema)
 module.exports = Booking

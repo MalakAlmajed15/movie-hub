@@ -6,26 +6,41 @@
     <title>Profile</title>
 </head>
 <body>
-    <%- include('../partials/navbar')%>
+    <%- include('../partials/navbar') %>
+
     <div class="profile-container">
-        <h1>Username: <%= user.username%></h1>
+        <h3>Username: <%= user.username %></h3>
         <h2>Your Bookings</h2>
+
         <% if (bookings && bookings.length > 0) { %>
             <ul>
                 <% bookings.forEach(booking => { %>
-                    <li><h3><%= booking.movie.name %></h3>
-                    <img src="<%= booking.movie.image %>" alt="<%= booking.movie.name %>">
-                    <p>Description: <%= booking.movie.description %></p>
-                    <p>Language: <%= booking.movie.language %></p>
-                    <p>Release Date: <%= booking.movie.releaseDate.toDateString() %></p>
-                    <p>Booking Date: <%= booking.bookingDate.toDateString() %></p>
+                    <li>
+                        <% if (booking.movie) { %>
+                            <h3><%= booking.movie.name %></h3>
+                            <img src="<%= booking.movie.image %>" alt="<%= booking.movie.name %>">
+                            <!-- <p>Description: <%= booking.movie.description %></p>
+                            <p>Language: <%= booking.movie.language %></p>
+                            <p>Release Date: <%= booking.movie.releaseDate %></p>
+                        <% } else { %>
+                            <p><strong>Movie information is not available.</strong></p>
+                        <% } %> -->
+
+                        <!-- <p>Booking Date: <%= booking.createdAt ? booking.createdAt.toLocaleDateString() : 'N/A' %></p> -->
+                        <p>Movie Time: <%= booking.time || 'N/A' %></p>
+                        <p>Movie Date: <%= booking.date || 'N/A' %></p>
+
+                        <a href="/bookings/delete/<%= booking._id %>">
+                            <button>Delete</button>
+                        </a>
                     </li>
-                    <%})%>
+                <% }) %>
             </ul>
-        <% } else {%>
+        <% } else { %>
             <p>You haven't booked any movies yet.</p>
-            <% } %>
+        <% } %>
     </div>
-    <%- include('../partials/footer')%>
+
+    <%- include('../partials/footer') %>
 </body>
 </html>

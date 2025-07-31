@@ -18,10 +18,8 @@ router.post('/newBooking/:id', async (req, res) => {
     try {
         req.body.user = req.session.user._id
         req.body.movie = req.params.id
-
         const newBooking = await Booking.create(req.body)
-
-        res.redirect('/movies/allMovies')
+        res.redirect('/profile')// redirect it to the profile page
     } catch (error) {
         console.error(error)
         res.redirect('/home')
@@ -70,7 +68,7 @@ router.post('/:id', async (req, res) => {
 })
 
 // deleting the booking
-router.delete('/:id', async (req, res) => {
+router.get('/delete/:id', async (req, res) => {
     try {
         const deletedBooking = await Booking.findByIdAndDelete(req.params.id)
         res.redirect('/bookings/allBookings')
