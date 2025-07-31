@@ -2,6 +2,32 @@ const router = require('express').Router()
 const Booking = require('../models/Booking')
 const Movie = require('../models/Movie')
 
+
+// adding new booking
+router.get('/newBooking/:id', async (req,res) => {
+    try {
+        const movie = await Movie.findById(req.params.id)
+        res.render('bookings/newBooking', {movie})
+    } catch (error) {
+        console.error(error)
+        res.redirect('/home')
+    }
+})
+
+router.post('/newBooking/:id', async (req, res) => {
+    try {
+        req.body.user = req.session.user._id
+        req.body.movie = req.params.id
+
+        const newBooking = await Booking.create(req.body)
+
+        res.redirect('/movies/allMovies')
+    } catch (error) {
+        console.error(error)
+        res.redirect('/home')
+    }
+})
+
 // all bookings
 router.get('/allBookings', async (req, res) => {
     try {
@@ -53,29 +79,8 @@ router.delete('/:id', async (req, res) => {
     }
 })
 
-// create a route for adding a new booking
-router.get('/newBooking', async (req,res) => {
-    try {
-        const movie = await Movie.findById(movieId)
-        res.render('bookings/newBooking', {movie})
-    } catch (error) {
-        console.error(error)
-        res.redirect('/home')
-    }
-})
 
-router.post('/', async (req, res) => {
-    try {
-        const {movieId} = req.body
-        await Booking.create({
-            user: req.session.user._id,
-            movie: movieId
-        })
-        res.redirect('/home')
-    } catch (error) {
-        console.error(error)
-        res.redirect('/home')
-    }
-})
+
+
 
 module.exports = router

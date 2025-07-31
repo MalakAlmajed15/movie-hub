@@ -1,23 +1,24 @@
 const mongoose = require('mongoose')
-const {Schema} = mongoose
 
 const bookingSchema = new mongoose.Schema({
     user: {
-        type: Schema.Types.ObjectId,
+        type: mongoose.Schema.Types.ObjectId,
         ref: 'User',
         required: true
     },
     movie: {
-        type: Schema.Types.ObjectId,
+        type: mongoose.Schema.Types.ObjectId,
         ref: 'Movie',
         required: true
     },
     bookingDate: {
-        type: Date,
-        default: Date.now
+        type: String,
+        required: true,
+        default:Date.now()
+
     },
     date: {
-        type: Date,
+        type: String,
         required: true
     },
     time: {

@@ -19,11 +19,15 @@
     <p>Release Date: <%= movie.releaseDate%></p>
     <p>Language: <%= movie.language %></p>
 
-    <a href="bookings/newBooking.ejs">
+    <a href="/bookings/newBooking/<%= movie._id %>">
       <button>Book Now</button>
     </a>
   </div>
 
   <%- include('../partials/footer') %>
+
+  <script>
+    
+  </script>
 </body>
 </html>

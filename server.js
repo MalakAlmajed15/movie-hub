@@ -40,11 +40,13 @@ app.use((req, res, next) => {
 connectToDB()
 app.use('/',homeRoures)
 app.use('/auth', authRoutes)
-app.use('/movies', movieRoutes)
-app.use('/bookings', bookingRoutes)
 app.use('/profile', profileRoutes)
 
-// app.use(isSignedIn)
+app.use(isSignedIn)
+app.use('/bookings', bookingRoutes)
+app.use('/movies', movieRoutes)
+
+
 
 // listening to port 3000
 const port = process.env.PORT || 3000
