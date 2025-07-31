@@ -8,28 +8,32 @@
 <body>
     <%- include('../partials/navbar') %>
 
-  <div style="max-width: 500px; margin: auto; padding: 20px;">
+  <div >
     <h1>Edit Booking for "<%= booking.movie.name %>"</h1>
 
-    <img src="<%= booking.movie.image %>" alt="<%= booking.movie.name %>" style="width: 100%; max-height: 200px; object-fit: cover; margin-bottom: 15px;">
+    <img src="<%= booking.movie.image %>" alt="<%= booking.movie.name %>" >
 
     <form action="/bookings/<%= booking._id %>?_method=PUT" method="POST">
       <label for="date">Date:</label>
-      <input type="date" name="date" value="<%= booking.date.toISOString().split('T')[0] %>" required style="width: 100%; padding: 5px;"><br><br>
+      <input type="date" name="date" value="<%= booking.date.toISOString()%>" required >
+      <br>
+      <br>
 
       <label for="time">Time:</label>
-      <select name="time" required style="width: 100%; padding: 5px;">
+      <select name="time" required >
         <option value="">--Select Time--</option>
         <% ['1:00 PM', '3:30 PM', '6:00 PM', '8:30 PM'].forEach(option => { %>
-          <option value="<%= option %>" <%= booking.time === option ? 'selected' : '' %>><%= option %></option>
+          <option value="<%= option %>" <%= booking.time === option ? 'selected' : '' %>><%= option %></option> <!--modify-->
         <% }) %>
-      </select><br><br>
+      </select>
+      <br>
+      <br>
 
       <button type="submit">Update Booking</button>
     </form>
 
     <br>
-    <a href="/bookings/all">← Back to My Bookings</a>
+    <a href="/bookings/allBookings">← Back to My Bookings</a>
   </div>
 
   <%- include('../partials/footer') %>
