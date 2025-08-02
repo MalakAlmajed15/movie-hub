@@ -3,38 +3,44 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Booking</title>
+    <link rel="stylesheet" href="styles/style.css">
 </head>
 <body>
     <div id="bookingModal" class="modal" >
     <div class="modal-content" >
-    <h2>Book <%= movie.name %></h2>
+    <h2 class="booking-title">Book <%= movie.name %> Movie</h2>
+    
+    <div class="movie-photo">
     <img src="<%= movie.image %>" alt="<%= movie.name %>" >
+    </div>
     
     <form action="/bookings/newBooking/<%= movie._id  %>" method="POST">
       <input type="hidden" name="movieId" value="<%= movie._id %>">
       
+      <div class="date-form">
       <label for="date">Select Date:</label>
-      <select name="date" required >
+      <select name="date" id="date" required >
         <option value="">--Select Date--</option>
         <option value="10-08-2025">10-08-2025</option>
         <option value="11-08-2025">11-08-2025</option>
         <option value="12-08-2025">12-08-2025</option>
         <option value="13-08-2025">13-08-2025</option>
       </select>
-      <br>
-      <br>
+      </div>
+
+      <div class="time-form">
       <label for="time">Select Time:</label>
-      <select name="time" required >
+      <select name="time" id="time" required >
         <option value="">--Select Time--</option>
         <option value="1:00 PM">1:00 PM</option>
         <option value="3:30 PM">3:30 PM</option>
         <option value="6:00 PM">6:00 PM</option>
         <option value="8:30 PM">8:30 PM</option>
       </select>
-      <br>
-      <br>
-      <button type="submit">Confirm Booking</button>
+      </div>
+
+      <button type="submit" class="confirm-btn">Confirm Booking</button>
     </form>
   </div>
 </div>

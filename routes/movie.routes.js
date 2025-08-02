@@ -26,5 +26,4 @@ router.get('/:id', async (req, res) => {
   res.render('movies/movieDetails', { movie })
 })
 
-
 module.exports = router

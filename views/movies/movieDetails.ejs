@@ -4,30 +4,31 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title><%= movie.name %></title>
+    <link rel="stylesheet" href="styles/style.css">
 </head>
 <body>
     <%- include('../partials/navbar') %>
 
-    <div class="movie-details">
-    <h1><%= movie.name %></h1>
+    <div class="movie-details-container">
+    <h1 class="movie-name"><%= movie.name %></h1>
     
     <% if (movie.image) { %>
+      <div class="movie-poster">
       <img src="<%= movie.image %>" alt="<%= movie.name %>">
+      </div>
     <% } %>
+    
+    <div class="movie-information">
+      <p class="movie-description">Description: <%= movie.description %></p>
+      <p class="movie-release">Release Date: <%= movie.releaseDate%></p>
+      <p class="movie-language">Language: <%= movie.language %></p>
+    </div>
 
-    <p>Description: <%= movie.description %></p>
-    <p>Release Date: <%= movie.releaseDate%></p>
-    <p>Language: <%= movie.language %></p>
-
-    <a href="/bookings/newBooking/<%= movie._id %>">
-      <button>Book Now</button>
-    </a>
+    <div class="booking-btn-container">
+      <a href="/bookings/newBooking/<%= movie._id %>" class="booking-btn">Book Now</a>
+    </div>
   </div>
 
   <%- include('../partials/footer') %>
-
-  <script>
-    
-  </script>
 </body>
 </html>

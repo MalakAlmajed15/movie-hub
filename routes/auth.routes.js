@@ -2,7 +2,6 @@ const router = require("express").Router()
 const User = require("../models/User")
 const bcrypt = require("bcrypt")
 
-
 router.get("/sign-up", (req, res) => {
     res.render("auth/sign-up.ejs", { error: null })
 })
@@ -48,8 +47,6 @@ router.post("/sign-up", async (req, res) => {
     }
 });
 
-
-
 router.get("/login", (req, res) => {
     res.render("auth/login.ejs", { error: null })
 })
@@ -83,8 +80,6 @@ router.post("/login", async (req, res) => {
         res.render("auth/sign-in.ejs", { error: "An unexpected error occurred." });
     }
 });
-
-
 
 router.get("/logout", (req, res) => {
     req.session.destroy()

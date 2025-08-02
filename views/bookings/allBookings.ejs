@@ -3,36 +3,32 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>My Bookings</title>
+  <title>All Bookings</title>
+  <link rel="stylesheet" href="styles/style.css">
 </head>
 <body>
   <%- include('../partials/navbar') %>
 
   <div class="booking-details">
-    <h1>My Bookings</h1>
+    <h1 class="page-title">My Bookings</h1>
 
     <% if (allBookings.length > 0) { %>
       <div class="booking-container">
         <% allBookings.forEach(booking => { %>
-          <div>
-            <img src="<%= booking.movie.image %>" alt="<%= booking.movie.name %>">
+          <div class="booking-card">
+            <img src="<%= booking.movie.image %>" alt="<%= booking.movie.name %>" class="movie-image">
+            
+            <div class="booking-info">
             <h3><%= booking.movie.name %></h3>
             <p>Language: <%= booking.movie.language %></p>
-
-            <p>
-              Release Date:
-              <%= booking.movie.releaseDate%>
-            </p>
-
-            <p>
-              Booked On:
-              <%= booking.bookingDate%>
-            </p>
+            <p>Release Date:<%= booking.movie.releaseDate%></p>
+            <p>Booked On:<%= booking.bookingDate%></p>
+            </div>
           </div>
         <% }) %>
       </div>
     <% } else { %>
-      <p>You have no bookings yet.</p>
+      <p class="no-booking-msg">You have no bookings yet.</p>
     <% } %>
   </div>
 

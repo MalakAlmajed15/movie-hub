@@ -2,7 +2,6 @@ const router = require('express').Router()
 const Booking = require('../models/Booking')
 const Movie = require('../models/Movie')
 
-
 // adding new booking
 router.get('/newBooking/:id', async (req,res) => {
     try {
@@ -19,7 +18,7 @@ router.post('/newBooking/:id', async (req, res) => {
         req.body.user = req.session.user._id
         req.body.movie = req.params.id
         const newBooking = await Booking.create(req.body)
-        res.redirect('/profile')// redirect it to the profile page
+        res.redirect('/profile')
     } catch (error) {
         console.error(error)
         res.redirect('/home')
@@ -60,25 +59,23 @@ router.get('/updateBooking/:id', async (req, res) => {
 // updating the booking 
 router.post('/:id', async (req, res) => {
     try {
+        req.body.booking = req.session.movie._id
+        req.body.movie = req.params.id
         const updatedBooking = await Booking.findByIdAndUpdate(req.params.id, req.body)
         res.redirect('/bookings/bookingDetails')
     } catch (error) {
         console.log(error)
     }
-})
+}) // adding the movie and the booking
 
 // deleting the booking
 router.get('/delete/:id', async (req, res) => {
     try {
         const deletedBooking = await Booking.findByIdAndDelete(req.params.id)
-        res.redirect('/bookings/allBookings')
+        res.redirect('/profile')
     } catch (error) {
         console.log(error)
     }
 })
-
-
-
-
 
 module.exports = router

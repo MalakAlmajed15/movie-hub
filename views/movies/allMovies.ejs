@@ -4,25 +4,28 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Movies</title>
+    <link rel="stylesheet" href="styles/style.css">
 </head>
 <body>
     <%- include('../partials/navbar')%>
+    <div class="page-header">
     <h1>All Movies</h1>
+    </div>
+
     <div class='movie-container'>
         <% if (allMovies && allMovies.length > 0) { %>
             <% allMovies.forEach(movie => { %>
                 <div class="movie-card">
                     <img src="<%=movie.image%>" alt="<%=movie.name%>">
-                    <h3><%= movie.name %></h3>
-                    <a href="/movies/<%= movie._id %>">
-                        <button>More Details</button>
-                    </a>
+                    <h3 class="movie-title"><%= movie.name %></h3>
+                    <a href="/movies/<%= movie._id %>" class="btn-details">More Details</a>
                 </div>
             <% }) %>
     <%} else {%>
-        <p>No movies available right now.</p>
+        <p class="no-movies-msg">No movies available right now.</p>
     <% } %>
     </div>
+
     <%- include('../partials/footer')%>
 </body>
 </html>

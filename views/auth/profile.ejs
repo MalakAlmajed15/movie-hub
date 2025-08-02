@@ -1,46 +1,45 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Profile</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title><%= user.username %>'s Profile</title>
+  <link rel="stylesheet" href="/styles/style.css" />
 </head>
-<body>
-    <%- include('../partials/navbar') %>
+<body class="profile-page">
 
-    <div class="profile-container">
-        <h3>Username: <%= user.username %></h3>
-        <h2>Your Bookings</h2>
+  <%- include('../partials/navbar') %>
 
-        <% if (bookings && bookings.length > 0) { %>
-            <ul>
-                <% bookings.forEach(booking => { %>
-                    <li>
-                        <% if (booking.movie) { %>
-                            <h3><%= booking.movie.name %></h3>
-                            <img src="<%= booking.movie.image %>" alt="<%= booking.movie.name %>">
-                            <!-- <p>Description: <%= booking.movie.description %></p>
-                            <p>Language: <%= booking.movie.language %></p>
-                            <p>Release Date: <%= booking.movie.releaseDate %></p>
-                        <% } else { %>
-                            <p><strong>Movie information is not available.</strong></p>
-                        <% } %> -->
+  <div class="profile-container">
+    <h2 class="profile-heading"><%= user.username %>'s Profile</h2>
+    <h3 class="section-title">Your Bookings</h3>
 
-                        <!-- <p>Booking Date: <%= booking.createdAt ? booking.createdAt.toLocaleDateString() : 'N/A' %></p> -->
-                        <p>Movie Time: <%= booking.time || 'N/A' %></p>
-                        <p>Movie Date: <%= booking.date || 'N/A' %></p>
+    <% if (bookings && bookings.length > 0) { %>
+      <ul class="booking-list">
+        <% bookings.forEach(booking => { %>
+          <li class="booking-item">
+            <% if (booking.movie) { %>
+              <h4 class="movie-title"><%= booking.movie.name %></h4>
+              <img src="<%= booking.movie.image %>" alt="<%= booking.movie.name %>" class="movie-image">
+            <% } else { %>
+              <p class="missing-info">Movie information is not available.</p>
+            <% } %>
 
-                        <a href="/bookings/delete/<%= booking._id %>">
-                            <button>Delete</button>
-                        </a>
-                    </li>
-                <% }) %>
-            </ul>
-        <% } else { %>
-            <p>You haven't booked any movies yet.</p>
-        <% } %>
-    </div>
+            <p><strong>Movie Time:</strong> <%= booking.time || 'N/A' %></p>
+            <p><strong>Movie Date:</strong> <%= booking.date || 'N/A' %></p>
 
-    <%- include('../partials/footer') %>
+            <div class="booking-actions">
+              <a href="/bookings/updateBooking/<%= booking._id %>" class="btn-secondary">Update</a>
+              <a href="/bookings/delete/<%= booking._id %>" class="btn-danger">Delete</a>
+            </div>
+          </li>
+        <% }) %>
+      </ul>
+    <% } else { %>
+      <p class="no-bookings-msg">You haven't booked any movies yet.</p>
+    <% } %>
+  </div>
+
+  <%- include('../partials/footer') %>
 </body>
 </html>

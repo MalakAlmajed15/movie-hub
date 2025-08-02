@@ -4,11 +4,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Home Page</title>
+    <link rel="stylesheet" href="styles/style.css">
 </head>
 <body>
     <%- include('./partials/navbar')%>
-     <h1>WELCOME TO MOVIE HUB!</h1>
-    <a  href="/movies/allMovies">All Movies</a>
+    
+    <div class="ohome-page">
+    <h1 class="welcome">WELCOME TO MOVIE HUB!</h1>
+    <a  class="movies-btn" href="/movies/allMovies">Browse All Movies</a>
+    </div>
+    
     <%- include('./partials/footer')%>
 </body>
 </html>

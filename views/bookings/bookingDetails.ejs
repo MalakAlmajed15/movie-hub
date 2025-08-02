@@ -4,24 +4,32 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Booking Details</title>
+    <link rel="stylesheet" href="styles/style.css">
 </head>
 <body>
     <%- include('../partials/navbar') %>
-  <div class="container">
-    <h1>Booking Details</h1>
+    
+    <div class="container">
+    <h1 class="page-title">Booking Details</h1>
+    
     <% if (booking && booking.movie) { %>
       <div class="booking-card" >
-        <img src="<%= booking.movie.image %>" alt="<%= booking.movie.name %>" >
-        <h2><%= booking.movie.name %></h2>
+        
+        <div class="booking-poster">
+          <img src="<%= booking.movie.image %>" alt="<%= booking.movie.name %>" class="movie-image">
+        </div>
+        
+        <div class="booking-info">
+        <h2 class="movie-title"><%= booking.movie.name %></h2>
         <p>Description: <%= booking.movie.description %></p>
         <p>Language: <%= booking.movie.language %></p>
         <p>Release Date: <%= new Date(booking.movie.releaseDate).toLocaleDateString()%></p>
         <p>Booking Date: <%= booking.bookingDate.toDateString() %></p>
       </div>
+        </div>
     <% } else { %>
-      <p>Booking details not found.</p>
+      <p class="no-booking-msg">Booking details not found.</p>
     <% } %>
-
   </div>
 
   <%- include('../partials/footer') %>
