@@ -49,8 +49,10 @@ router.get('/bookingDetails', async (req, res) => {
 // edit bookings
 router.get('/updateBooking/:id', async (req, res) => {
     try {
-        const foundBooking = await Booking.findById(req.params.id)
-        res.render('bookings/editBooking.ejs', {foundBooking})
+        const dateArray = ['10-08-2025', '11-08-2025', '12-08-2025', '13-08-2025', '14-08-2025', '15-08-2025', '16-08-2025', '17-08-2025']
+        const timeArray = ['1:00 PM', '2:00 PM', '3:00 PM', '4:00 PM', '5:00 PM', '6:00 PM', '7:00 PM', '8:00 PM']
+        const foundBooking = await Booking.findById(req.params.id).populate("movie")
+        res.render('bookings/editBooking.ejs', {foundBooking, dateArray, timeArray})
     } catch (error) {
         console.log(error)
     }

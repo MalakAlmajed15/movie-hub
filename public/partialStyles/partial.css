@@ -28,6 +28,7 @@ body {
   font-weight: bold;
   color: #ff3c3c;
   letter-spacing: 1px;
+  text-decoration: none;
 }
 
 .navbar-right {

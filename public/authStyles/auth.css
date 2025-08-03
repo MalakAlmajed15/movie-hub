@@ -18,7 +18,8 @@ body {
   background-position: center;
   background-repeat: no-repeat;
 } */
-.login-page{
+ 
+.login-page, .sign-up-page{
     font-family: "Lora", serif;
   background-color: black; 
   color: white;
@@ -115,8 +116,11 @@ button:hover,
 .form-link {
   color: #ff3c3c;
   font-weight: bold;
+  text-decoration: none;
+  transition: color 0.3s ease;
 }
 
 .form-link:hover {
   color: white;
+  text-decoration: underline;
 }

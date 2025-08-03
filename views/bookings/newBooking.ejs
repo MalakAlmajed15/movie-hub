@@ -29,7 +29,7 @@
           <% for(let i = 0 ; i < 3 ; i++){ %>
             <% const randomDate= dateArray[randomD]%>
             <% const date = randomDate %>
-            <option value=""><%=date%></option> 
+            <option value="<%=date%>"><%=date%></option> 
             <% dateArray.splice(dateArray.indexOf(date),1) %>
           <%}%>
     
@@ -42,11 +42,10 @@
         <option value="">--Select Time--</option>
         <% const timeArray = ['1:00 PM', '2:00 PM', '3:00 PM', '4:00 PM', '5:00 PM', '6:00 PM', '7:00 PM', '8:00 PM']%>
                   <% const randomT = Math.floor(Math.random() * timeArray.length)%>
-                  
                   <% for(let i = 0 ; i < 3 ; i++){ %>
                     <% const randomTime= timeArray[randomT]%>
                     <% const time = randomTime %>
-                    <option value=""><%=time%></option> 
+                    <option value="<%= time %>"><%=time%></option> 
                     <% timeArray.splice(timeArray.indexOf(time),1) %>
                   <%}%>
       </select>

@@ -4,9 +4,11 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Sign-up</title>
+  <link rel="stylesheet" href="/authStyles/auth.css" />
+
 </head>
-<body>
-  <div class="sign-up-form">
+<body class="sign-up-page">
+  <div class="form-container">
     <h1 class="form-title">Sign Up</h1>
 
     <form action="/auth/sign-up" method="post" class="auth-form">
@@ -20,7 +22,7 @@
         <input type="password" name="password" id="password" class="form-input" required>
       </div>
 
-      <button class="sign-up-btn">Sign Up</button>
+      <button class="btn-primary">Sign Up</button>
     </form>
 
     <% if (error) { %>

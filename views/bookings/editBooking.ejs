@@ -11,24 +11,24 @@
 
     <div class="update-booking-container">
     
-    <h1 class="page-title">Edit Booking for <%= booking.movie.name %></h1>
+    <h1 class="page-title">Update Booking for <%= foundBooking.movie.name %></h1>
     
     <div class="movie-poster">
-    <img src="<%= booking.movie.image %>" alt="<%= booking.movie.name %>" >
+    <img src="<%= foundBooking.movie.image %>" alt="<%= foundBooking.movie.name %>" >
     </div>
 
-    <form action="/bookings/updateBooking/<%= movie._id  %>" method="POST">
+    <form action="/bookings/updateBooking/<%= foundBooking.movie._id  %>" method="POST">
       <div class="update-date">
       <label for="date">Date:</label>
-      <input type="date" name="date" class="form-input" value="<%= booking.date.toISOString().split('T')[0]%>">
+      <input type="date" name="date" class="form-input" value="<%= foundBooking.date%>">
       </div>
       
       <div class="update-time">
       <label for="time">Time:</label>
       <select name="time" class="form-select" required >
         <option value="">--Select Time--</option>
-        <% ['1:00 PM', '3:30 PM', '6:00 PM', '8:30 PM'].forEach(option => { %>
-          <option value="<%= option %>" <%= booking.time === option ? 'selected' : '' %>>
+        <% timeArray.forEach(option => { %>
+          <option value="<%= foundBooking.time %>" <%= foundBooking.time === option ? 'selected' : '' %>>
             <%= option %></option> 
         <% }) %>
       </select>
