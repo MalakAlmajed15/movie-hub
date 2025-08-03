@@ -1,6 +1,8 @@
 const router = require("express").Router()
 const User = require("../models/User")
 const bcrypt = require("bcrypt")
+const Booking = require("../models/Booking")
+const Movie = require("../models/Movie")
 
 router.get("/sign-up", (req, res) => {
     res.render("auth/sign-up.ejs", { error: null })
@@ -85,5 +87,19 @@ router.get("/logout", (req, res) => {
     req.session.destroy()
     res.redirect("/auth/login")
 })
+
+
+router.get('/profile', async (req, res) => {
+  const user = req.session.user;
+  if (!user) {
+    return res.redirect('/auth/login');
+  }
+
+  const bookings = await Booking.find({ user: user._id }).populate('movie');
+  res.render('auth/profile', { user, bookings });
+});
+
+
+
 
 module.exports = router 
