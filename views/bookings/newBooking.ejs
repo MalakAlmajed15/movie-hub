@@ -4,9 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Booking</title>
-    <link rel="stylesheet" href="styles/style.css">
+    <link rel="stylesheet" href="/bookingStyles/booking.css">
 </head>
 <body>
+      <%- include('../partials/navbar') %>
+<div class="new-booking-container">
     <div id="bookingModal" class="modal" >
     <div class="modal-content" >
     <h2 class="booking-title">Book <%= movie.name %> Movie</h2>
@@ -41,8 +43,12 @@
       </div>
 
       <button type="submit" class="confirm-btn">Confirm Booking</button>
+
     </form>
   </div>
 </div>
+</div>
+    <%- include('../partials/footer') %>
+
 </body>
 </html>

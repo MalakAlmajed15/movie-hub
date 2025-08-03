@@ -1,0 +1,132 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #0b0c10;
+  color: #ffffff;
+  padding: 40px 20px;
+  min-height: 100vh;
+}
+
+.page-header {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.page-header h1 {
+  font-size: 2.8rem;
+  color: #ff3c3c;
+  letter-spacing: 1px;
+}
+
+.movie-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 25px;
+  max-width: 1200px;
+  margin: auto;
+}
+
+.movie-card {
+  background-color: #1e1e1e;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 16px rgba(255, 255, 255, 0.05);
+  text-align: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.movie-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 25px rgba(255, 60, 60, 0.15);
+}
+
+.movie-card img {
+  width: 100%;
+  height: 300px;
+  object-fit: cover;
+}
+
+.movie-title {
+  font-size: 1.2rem;
+  margin: 15px 0 10px;
+  color: #fff;
+}
+
+.btn-details {
+  display: inline-block;
+  margin-bottom: 20px;
+  padding: 10px 20px;
+  background-color: #ff3c3c;
+  color: #fff;
+  border-radius: 50px;
+  text-decoration: none;
+  font-weight: bold;
+  transition: background 0.3s ease;
+}
+
+.btn-details:hover {
+  background-color: #d93030;
+}
+
+.no-movies-msg {
+  text-align: center;
+  font-size: 1.2rem;
+  color: #bbb;
+  margin-top: 40px;
+}
+
+.movie-details-container {
+  max-width: 800px;
+  margin: auto;
+  background: #1c1f26;
+  padding: 40px;
+  border-radius: 16px;
+  box-shadow: 0 0 30px rgba(255, 60, 60, 0.05);
+}
+
+.movie-name {
+  text-align: center;
+  font-size: 2.5rem;
+  color: #ff3c3c;
+  margin-bottom: 30px;
+}
+
+.movie-poster img {
+  width: 100%;
+  max-height: 450px;
+  object-fit: cover;
+  border-radius: 8px;
+  margin-bottom: 30px;
+}
+
+.movie-information p {
+  font-size: 1.05rem;
+  margin-bottom: 12px;
+  color: #ddd;
+}
+
+.booking-btn-container {
+  text-align: center;
+  margin-top: 30px;
+}
+
+.booking-btn {
+  padding: 14px 30px;
+  background: linear-gradient(to right, #ff3c3c, #d92a2a);
+  color: white;
+  border: none;
+  border-radius: 50px;
+  font-size: 1rem;
+  font-weight: bold;
+  text-decoration: none;
+  transition: background 0.3s ease;
+}
+
+.booking-btn:hover {
+  background: linear-gradient(to right, #d92a2a, #a52222);
+}

@@ -1,32 +1,35 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sign-up</title>
-    <link rel="stylesheet" href="/styles/style.css" />
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Sign-up</title>
 </head>
 <body>
-    <%- include('../partials/navbar')%>
-    <div class="sign-up-form">
+  <div class="sign-up-form">
     <h1 class="form-title">Sign Up</h1>
-    <form action="/auth/sign-up" method="post" class="auth-form">
-        
-        <div class="form-group">
-        <label for="username">Username:</label>
-        <input type="text" name="username" id="username" class="form-input">
-        </div>
 
-        <div class="form-group">
+    <form action="/auth/sign-up" method="post" class="auth-form">
+      <div class="form-group">
+        <label for="username">Username:</label>
+        <input type="text" name="username" id="username" class="form-input" required>
+      </div>
+
+      <div class="form-group">
         <label for="password">Password:</label>
-        <input type="password" name="password" id="password" class="form-input">
-        </div>
-    
-        <button class="sign-up-btn">Sign Up</button>
+        <input type="password" name="password" id="password" class="form-input" required>
+      </div>
+
+      <button class="sign-up-btn">Sign Up</button>
     </form>
-    <% if (error) {%>
-        <p class="form-error"><%=error%></p>
-        <%}%>
-    </div>
+
+    <% if (error) { %>
+      <p class="form-error"><%= error %></p>
+    <% } %>
+
+    <p class="form-note">Already have an account? 
+      <a href="/auth/login" class="form-link">Log in</a>.
+    </p>
+  </div>
 </body>
 </html>

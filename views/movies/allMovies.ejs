@@ -4,10 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Movies</title>
-    <link rel="stylesheet" href="styles/style.css">
+    <link rel="stylesheet" href="/movieStyles/movie.css">
 </head>
 <body>
     <%- include('../partials/navbar')%>
+<div class="all-movies-container">
     <div class="page-header">
     <h1>All Movies</h1>
     </div>
@@ -25,7 +26,7 @@
         <p class="no-movies-msg">No movies available right now.</p>
     <% } %>
     </div>
-
+</div>
     <%- include('../partials/footer')%>
 </body>
 </html>

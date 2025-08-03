@@ -1,0 +1,108 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Lora", serif;
+  background-color: black; 
+  color: white;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 40px 20px;
+  background-image: url('/pictures/image.png'); 
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.form-container,
+.sign-up-form {
+  background-color: rgba(0, 0, 0, 0.3);
+  padding: 30px;
+  max-width: 400px;
+  width: 100%;
+  border-radius: 12px;
+  border: 0.5px solid white;
+}
+
+.form-title {
+  text-align: center;
+  margin-bottom: 25px;
+  font-size: 2em;
+  font-weight: bold;
+  color: #fff;
+}
+
+.auth-form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+}
+
+label {
+  margin-bottom: 6px;
+  font-weight: 500;
+}
+
+.form-input {
+  padding: 10px 12px;
+  border-radius: 6px;
+  border: 1px solid #888;
+  background-color: rgb(17, 17, 17, 0.3);
+  color: #fff;
+}
+
+.form-input:focus {
+  border-color: white;
+  outline: none;
+}
+
+button,
+.sign-up-btn,
+.btn-primary {
+  background-color: #ff3c3c;
+  border: none;
+  padding: 12px;
+  border-radius: 50px;
+  font-weight: bold;
+  color: white;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+button:hover,
+.sign-up-btn:hover,
+.btn-primary:hover {
+  background-color: #cc2f2f;
+}
+
+.form-error {
+  color: white;
+  margin-top: 15px;
+  text-align: center;
+}
+
+.form-note {
+  text-align: center;
+  margin-top: 20px;
+  font-size: 0.95em;
+  color: #ccc;
+}
+
+.form-link {
+  color: #ff3c3c;
+  font-weight: bold;
+}
+
+.form-link:hover {
+  color: white;
+}
