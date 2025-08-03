@@ -1,4 +1,3 @@
-// imports
 const express = require('express')
 const app = express()
 const dotenv = require('dotenv').config()
@@ -15,7 +14,6 @@ const movieRoutes = require('./routes/movie.routes')
 const bookingRoutes = require('./routes/booking.routes')
 const profileRoutes = require('./routes/profile.routes')
 
-//middleware
 app.use(express.static('public'))
 app.use(express.urlencoded({extended: true}))
 app.use(methodOverride('_method'))
@@ -35,9 +33,8 @@ app.use((req, res, next) => {
   next();
 });
 
-
-// connecting to database
 connectToDB()
+
 app.use('/',homeRoures)
 app.use('/auth', authRoutes)
 app.use('/profile', profileRoutes)
@@ -46,9 +43,6 @@ app.use(isSignedIn)
 app.use('/bookings', bookingRoutes)
 app.use('/movies', movieRoutes)
 
-
-
-// listening to port 3000
 const port = process.env.PORT || 3000
 const server = app.listen(port, () => {
     console.log('Listening on port ' + port)

@@ -26,8 +26,8 @@
               <p class="missing-info">Movie information is not available.</p>
             <% } %>
 
-            <p>Movie Time: <%= booking.time%></p>
-            <p>Movie Date: <%= booking.date%></p>
+            <p class="movieDetails">Movie Time: <%= booking.time%></p>
+            <p class="movieDetails">Movie Date: <%= booking.date%></p>
 
             <div class="booking-actions">
               <a href="/bookings/updateBooking/<%= booking._id %>" class="btn-secondary">Update Booking</a>

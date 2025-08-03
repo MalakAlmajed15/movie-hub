@@ -1,5 +1,5 @@
 .login-page, .sign-up-page{
-    font-family: "Lora", serif;
+  font-family: "Lora", serif;
   background-color: black; 
   color: white;
   min-height: 100vh;
@@ -12,6 +12,7 @@
   background-position: center;
   background-repeat: no-repeat;
 }
+
 .form-container,
 .sign-up-form {
   background-color: rgba(0, 0, 0, 0.3);
@@ -19,8 +20,7 @@
   max-width: 400px;
   width: 100%;
   border-radius: 12px;
-  border: 0.5px solid white;
-  
+  border: 0.5px solid white; 
 }
 
 .form-title {
@@ -45,6 +45,7 @@
 label {
   margin-bottom: 6px;
   font-weight: 500;
+  font-size: large;
 }
 
 .form-input {
@@ -63,7 +64,7 @@ label {
 button,
 .sign-up-btn,
 .btn-primary {
-  background-color: #ff3c3c;
+  background-color: #cc2f2f;
   border: none;
   padding: 12px;
   border-radius: 50px;
@@ -71,18 +72,21 @@ button,
   color: white;
   cursor: pointer;
   transition: background-color 0.3s ease;
+  font-family: "Lora", serif;
+  font-size: 15px;
 }
 
 button:hover,
 .sign-up-btn:hover,
 .btn-primary:hover {
-  background-color: #cc2f2f;
+  background-color: #ff3c3c;
 }
 
 .form-error {
-  color: white;
+  color: #ccc;
   margin-top: 15px;
   text-align: center;
+  font-size: 13px;
 }
 
 .form-note {
@@ -93,7 +97,7 @@ button:hover,
 }
 
 .form-link {
-  color: #ff3c3c;
+  color: #cc2f2f;
   font-weight: bold;
   text-decoration: none;
   transition: color 0.3s ease;
@@ -105,27 +109,19 @@ button:hover,
 }
 
 .profile-page {
-  font-family: "Lora", serif;
-  background-color: black;
-  color: white;
-  min-height: 100vh;
-  padding: 40px 20px;
   background-image: url('/pictures/image.png');
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-}
+} 
 
 .profile-container {
-  background-color: rgba(0, 0, 0, 0.6);
+  background-color: rgb(17, 17, 17, 0.3);
   padding: 30px;
   border-radius: 12px;
   max-width: 800px;
-  width: 100%;
-  /* margin: 0 auto; */
   border: 0.5px solid white;
-  margin: 50px auto;
-  /* margin-bottom: 50px; */
+  margin: 100px auto ;
 }
 
 .profile-heading {
@@ -151,18 +147,21 @@ button:hover,
   background-color: rgba(255, 255, 255, 0.05);
   border: 1px solid #444;
   border-radius: 10px;
-  padding: 20px;
+  padding: 20px ;
   margin-bottom: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .movie-title {
-  font-size: 1.3em;
+  font-size: 30px;
   margin-bottom: 10px;
   color: #fff;
 }
 
 .movie-image {
-  width: 100%;
+  width: 20%;
   max-width: 300px;
   height: auto;
   border-radius: 10px;
@@ -175,7 +174,7 @@ button:hover,
   color: #ff3c3c;
   font-style: italic;
   margin-bottom: 10px;
-}
+} 
 
 .booking-actions {
   display: flex;
@@ -202,12 +201,12 @@ button:hover,
 }
 
 .btn-danger {
-  background-color: #ff3c3c;
+  background-color: #cc2f2f;
   color: white;
 }
 
 .btn-danger:hover {
-  background-color: #cc2f2f;
+  background-color: #ff3c3c;
 }
 
 .no-bookings-msg {
@@ -215,4 +214,9 @@ button:hover,
   font-style: italic;
   margin-top: 20px;
   font-size: 1.1em;
+}
+
+.movieDetails {
+  font-size: 1.1em;
+  color: #cccccc;
 }
