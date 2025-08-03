@@ -24,10 +24,16 @@
       <label for="date">Select Date:</label>
       <select name="date" id="date" required >
         <option value="">--Select Date--</option>
-        <option value="10-08-2025">10-08-2025</option>
+        <!-- <option value="10-08-2025">10-08-2025</option>
         <option value="11-08-2025">11-08-2025</option>
         <option value="12-08-2025">12-08-2025</option>
-        <option value="13-08-2025">13-08-2025</option>
+        <option value="13-08-2025">13-08-2025</option> -->
+        <% const dateArray = ['10-08-2025', '11-08-2025', '12-08-2025', '13-08-2025', '14-08-2025', '15-08-2025', '16-08-2025', '17-08-2025']%>
+          <% const random = Math.floor(Math.random() * dateArray.length)%>
+          <% const randomDate= dateArray[random]%>
+        <option value=""><%=randomDate%></option>
+        <option value=""><%=randomDate%></option>
+        <option value=""><%=randomDate%></option>
       </select>
       </div>
 

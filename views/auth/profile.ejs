@@ -25,12 +25,12 @@
               <p class="missing-info">Movie information is not available.</p>
             <% } %>
 
-            <p><strong>Movie Time:</strong> <%= booking.time || 'N/A' %></p>
-            <p><strong>Movie Date:</strong> <%= booking.date || 'N/A' %></p>
+            <p>Movie Time: <%= booking.time%></p>
+            <p>Movie Date: <%= booking.date%></p>
 
             <div class="booking-actions">
-              <a href="/bookings/updateBooking/<%= booking._id %>" class="btn-secondary">Update</a>
-              <a href="/bookings/delete/<%= booking._id %>" class="btn-danger">Delete</a>
+              <a href="/bookings/updateBooking/<%= booking._id %>" class="btn-secondary">Update Booking</a>
+              <a href="/bookings/delete/<%= booking._id %>" class="btn-danger">Delete Booking</a>
             </div>
           </li>
         <% }) %>

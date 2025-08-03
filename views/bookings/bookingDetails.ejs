@@ -25,6 +25,8 @@
         <p>Language: <%= booking.movie.language %></p>
         <p>Release Date: <%= new Date(booking.movie.releaseDate).toLocaleDateString()%></p>
         <p>Booking Date: <%= booking.bookingDate.toDateString() %></p>
+        <p>Movie Date:<%= booking.date%></p>
+        <p>Movie Time:<%= booking.time%></p>
       </div>
         </div>
     <% } else { %>
