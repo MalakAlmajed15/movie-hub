@@ -1,4 +1,4 @@
-* {
+/* * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
@@ -17,8 +17,21 @@ body {
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
+} */
+.login-page{
+    font-family: "Lora", serif;
+  background-color: black; 
+  color: white;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 40px 20px;
+  background-image: url('/pictures/image.png'); 
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
 }
-
 .form-container,
 .sign-up-form {
   background-color: rgba(0, 0, 0, 0.3);
@@ -27,6 +40,7 @@ body {
   width: 100%;
   border-radius: 12px;
   border: 0.5px solid white;
+  
 }
 
 .form-title {

@@ -11,7 +11,7 @@
 <div class="new-booking-container">
     <div id="bookingModal" class="modal" >
     <div class="modal-content" >
-    <h2 class="booking-title">Book <%= movie.name %> Movie</h2>
+    <h2 class="booking-title">Booking <%= movie.name %> Movie</h2>
     
     <div class="movie-photo">
     <img src="<%= movie.image %>" alt="<%= movie.name %>" >
@@ -24,16 +24,15 @@
       <label for="date">Select Date:</label>
       <select name="date" id="date" required >
         <option value="">--Select Date--</option>
-        <!-- <option value="10-08-2025">10-08-2025</option>
-        <option value="11-08-2025">11-08-2025</option>
-        <option value="12-08-2025">12-08-2025</option>
-        <option value="13-08-2025">13-08-2025</option> -->
         <% const dateArray = ['10-08-2025', '11-08-2025', '12-08-2025', '13-08-2025', '14-08-2025', '15-08-2025', '16-08-2025', '17-08-2025']%>
-          <% const random = Math.floor(Math.random() * dateArray.length)%>
-          <% const randomDate= dateArray[random]%>
-        <option value=""><%=randomDate%></option>
-        <option value=""><%=randomDate%></option>
-        <option value=""><%=randomDate%></option>
+          <% const randomD = Math.floor(Math.random() * dateArray.length)%>
+          <% for(let i = 0 ; i < 3 ; i++){ %>
+            <% const randomDate= dateArray[randomD]%>
+            <% const date = randomDate %>
+            <option value=""><%=date%></option> 
+            <% dateArray.splice(dateArray.indexOf(date),1) %>
+          <%}%>
+    
       </select>
       </div>
 
@@ -41,11 +40,18 @@
       <label for="time">Select Time:</label>
       <select name="time" id="time" required >
         <option value="">--Select Time--</option>
-        <option value="1:00 PM">1:00 PM</option>
-        <option value="3:30 PM">3:30 PM</option>
-        <option value="6:00 PM">6:00 PM</option>
-        <option value="8:30 PM">8:30 PM</option>
+        <% const timeArray = ['1:00 PM', '2:00 PM', '3:00 PM', '4:00 PM', '5:00 PM', '6:00 PM', '7:00 PM', '8:00 PM']%>
+                  <% const randomT = Math.floor(Math.random() * timeArray.length)%>
+                  
+                  <% for(let i = 0 ; i < 3 ; i++){ %>
+                    <% const randomTime= timeArray[randomT]%>
+                    <% const time = randomTime %>
+                    <option value=""><%=time%></option> 
+                    <% timeArray.splice(timeArray.indexOf(time),1) %>
+                  <%}%>
       </select>
+
+              
       </div>
 
       <button type="submit" class="confirm-btn">Confirm Booking</button>
