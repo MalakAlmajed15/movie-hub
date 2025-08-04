@@ -41,17 +41,6 @@ router.post('/newBooking/:id', async (req, res) => {
     }
 })
 
-// all bookings
-router.get('/allBookings', async (req, res) => {
-    try {
-        const allBookings = await Booking.find({ user: req.session.user._id }).populate('movie')
-        res.render('bookings/allBookings.ejs', {allBookings})
-    } catch (error) {
-       console.error(error)
-       res.redirect('/home') 
-    }
-})
-
 // booking details
 router.get('/bookingDetails', async (req, res) => {
     try {
@@ -67,24 +56,6 @@ router.get('/updateBooking/:id', async (req, res) => {
 
      const foundBooking = await Booking.findById(req.params.id).populate('movie');
 
-  // Generate random 3 dates from an array
-//   let allDates = ['10-08-2025', '11-08-2025', '12-08-2025', '13-08-2025', '14-08-2025', '15-08-2025', '16-08-2025', '17-08-2025'];
-//   let dateArray = [];
-//   for (let i = 0; i < 3; i++) {
-//     const randomIndex = Math.floor(Math.random() * allDates.length);
-//     dateArray.push(allDates[randomIndex]);
-//     allDates.splice(randomIndex, 1);
-//   }
-
-//   // Same for times
-//   let allTimes = ['1:00 PM', '2:00 PM', '3:00 PM', '4:00 PM', '5:00 PM', '6:00 PM', '7:00 PM', '8:00 PM'];
-//   let timeArray = [];
-//   for (let i = 0; i < 3; i++) {
-//     const randomIndex = Math.floor(Math.random() * allTimes.length);
-//     timeArray.push(allTimes[randomIndex]);
-//     allTimes.splice(randomIndex, 1);
-//   }
-
   res.render('bookings/editBooking', {
   foundBooking,
   dateArrayO,
@@ -93,17 +64,6 @@ router.get('/updateBooking/:id', async (req, res) => {
 
 })
 
-// updating the booking 
-// router.post('/:id', async (req, res) => {
-//     try {
-//         req.body.booking = req.session.movie._id
-//         req.body.movie = req.params.id
-//         const updatedBooking = await Booking.findByIdAndUpdate(req.params.id, req.body)
-//         res.redirect('/bookings/bookingDetails')
-//     } catch (error) {
-//         console.log(error)
-//     }
-// }) // adding the movie and the booking
 
 router.put('/editBooking/:movieId', async (req, res) => {
   try {
