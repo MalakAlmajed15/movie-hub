@@ -1,7 +1,6 @@
 const router = require('express').Router()
 const Movie = require('../models/Movie')
 
-// all movies
 router.get('/allMovies', async (req, res) => {
     try {
         const allMovies = await Movie.find()
@@ -11,7 +10,6 @@ router.get('/allMovies', async (req, res) => {
     }
 })
 
-// movie details
 router.get('/movieDetails', async (req, res) => {
     try {
         const foundMovie = await Movie.findById(req.params.id)

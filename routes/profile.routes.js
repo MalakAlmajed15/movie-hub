@@ -4,7 +4,7 @@ const User = require('../models/User')
 
 router.get('/', async (req, res) => {
     if (!req.session.user) {
-        return res.redirect('/auth/login'); // or any login page
+        return res.redirect('/auth/login'); 
     }
     try {
         const user = await User.findById(req.session.user._id)

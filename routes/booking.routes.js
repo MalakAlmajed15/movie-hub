@@ -16,7 +16,7 @@ const randomD = Math.floor(Math.random() * dateArrayO.length)
             console.log(timeArrayO)
         }
 
-// adding new booking
+
 router.get('/newBooking/:id', async (req,res) => {
     try {
         const movie = await Movie.findById(req.params.id)
@@ -41,7 +41,6 @@ router.post('/newBooking/:id', async (req, res) => {
     }
 })
 
-// booking details
 router.get('/bookingDetails', async (req, res) => {
     try {
         const foundBooking = await Booking.findById(req.params.id)
@@ -51,7 +50,6 @@ router.get('/bookingDetails', async (req, res) => {
     }
 })
 
-// edit bookings
 router.get('/updateBooking/:id', async (req, res) => {
 
      const foundBooking = await Booking.findById(req.params.id).populate('movie');
@@ -71,7 +69,6 @@ router.put('/editBooking/:movieId', async (req, res) => {
     const movieId = req.params.movieId;
     const userId = req.session.user._id;
 
-    // Find the booking by movie and user
     const booking = await Booking.findOne({ movie: movieId, user: userId });
 
     if (!booking) {
@@ -82,7 +79,7 @@ router.put('/editBooking/:movieId', async (req, res) => {
     booking.time = time;
     await booking.save();
 
-    res.redirect('/auth/profile'); // or wherever you show bookings
+    res.redirect('/auth/profile'); 
   } catch (error) {
     console.error('Error updating booking:', error);
     res.status(500).send('Server error.');
@@ -90,7 +87,6 @@ router.put('/editBooking/:movieId', async (req, res) => {
 });
 
 
-// deleting the booking
 router.get('/delete/:id', async (req, res) => {
     try {
         const deletedBooking = await Booking.findByIdAndDelete(req.params.id)
