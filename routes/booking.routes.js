@@ -1,24 +1,28 @@
 const router = require('express').Router()
 const Booking = require('../models/Booking')
 const Movie = require('../models/Movie')
+const dateArrayO = ['10-08-2025', '11-08-2025', '12-08-2025', '13-08-2025', '14-08-2025', '15-08-2025', '16-08-2025', '17-08-2025']
+const timeArrayO = ['1:00 PM', '2:00 PM', '3:00 PM', '4:00 PM', '5:00 PM', '6:00 PM', '7:00 PM', '8:00 PM']
+const randomD = Math.floor(Math.random() * dateArrayO.length)
+        for(let i = 0 ; i < 5 ; i++){
+            const randomDate= dateArrayO[randomD]
+            dateArrayO.splice(randomDate, 1)
+            console.log(dateArrayO)
+        }
+        const randomT = Math.floor(Math.random() * timeArrayO.length)
+        for(let i = 0 ; i < 5 ; i++){
+            const randomTime= timeArrayO[randomT]
+            timeArrayO.splice(randomTime, 1)
+            console.log(timeArrayO)
+        }
 
 // adding new booking
 router.get('/newBooking/:id', async (req,res) => {
     try {
         const movie = await Movie.findById(req.params.id)
-        const dateArray = ['10-08-2025', '11-08-2025', '12-08-2025', '13-08-2025', '14-08-2025', '15-08-2025', '16-08-2025', '17-08-2025']
-        const timeArray = ['1:00 PM', '2:00 PM', '3:00 PM', '4:00 PM', '5:00 PM', '6:00 PM', '7:00 PM', '8:00 PM']
-        res.locals.dateArray = dateArray
-        res.locals.timeArray = timeArray
-        const randomD = Math.floor(Math.random() * dateArray.length)
-        for(let i = 0 ; i < 3 ; i++){
-            const randomDate= dateArray[randomD]
-            const date = randomDate
-            dateArray.splice(randomD, 1)
-            res.locals.date = date
-        }
-        console.log(dateArray)
-        res.render('bookings/newBooking', {movie})
+        
+        
+        res.render('bookings/newBooking', {movie , dateArrayO, timeArrayO})
     } catch (error) {
         console.error(error)
         res.redirect('/home')
@@ -60,39 +64,31 @@ router.get('/bookingDetails', async (req, res) => {
 
 // edit bookings
 router.get('/updateBooking/:id', async (req, res) => {
-    // try {
-    //     const dateArray = ['10-08-2025', '11-08-2025', '12-08-2025', '13-08-2025', '14-08-2025', '15-08-2025', '16-08-2025', '17-08-2025']
-    //     const timeArray = ['1:00 PM', '2:00 PM', '3:00 PM', '4:00 PM', '5:00 PM', '6:00 PM', '7:00 PM', '8:00 PM']
-    //     const foundBooking = await Booking.findById(req.params.id).populate("movie")
-    //     res.render('bookings/editBooking.ejs', {foundBooking, dateArray, timeArray})
-    // } catch (error) {
-    //     console.log(error)
-    // }
 
      const foundBooking = await Booking.findById(req.params.id).populate('movie');
 
   // Generate random 3 dates from an array
-  let allDates = ['10-08-2025', '11-08-2025', '12-08-2025', '13-08-2025', '14-08-2025', '15-08-2025', '16-08-2025', '17-08-2025'];
-  let dateArray = [];
-  for (let i = 0; i < 3; i++) {
-    const randomIndex = Math.floor(Math.random() * allDates.length);
-    dateArray.push(allDates[randomIndex]);
-    allDates.splice(randomIndex, 1);
-  }
+//   let allDates = ['10-08-2025', '11-08-2025', '12-08-2025', '13-08-2025', '14-08-2025', '15-08-2025', '16-08-2025', '17-08-2025'];
+//   let dateArray = [];
+//   for (let i = 0; i < 3; i++) {
+//     const randomIndex = Math.floor(Math.random() * allDates.length);
+//     dateArray.push(allDates[randomIndex]);
+//     allDates.splice(randomIndex, 1);
+//   }
 
-  // Same for times
-  let allTimes = ['1:00 PM', '2:00 PM', '3:00 PM', '4:00 PM', '5:00 PM', '6:00 PM', '7:00 PM', '8:00 PM'];
-  let timeArray = [];
-  for (let i = 0; i < 3; i++) {
-    const randomIndex = Math.floor(Math.random() * allTimes.length);
-    timeArray.push(allTimes[randomIndex]);
-    allTimes.splice(randomIndex, 1);
-  }
+//   // Same for times
+//   let allTimes = ['1:00 PM', '2:00 PM', '3:00 PM', '4:00 PM', '5:00 PM', '6:00 PM', '7:00 PM', '8:00 PM'];
+//   let timeArray = [];
+//   for (let i = 0; i < 3; i++) {
+//     const randomIndex = Math.floor(Math.random() * allTimes.length);
+//     timeArray.push(allTimes[randomIndex]);
+//     allTimes.splice(randomIndex, 1);
+//   }
 
   res.render('bookings/editBooking', {
   foundBooking,
-  dateArray,
-  timeArray
+  dateArrayO,
+  timeArrayO
 });
 
 })
@@ -109,7 +105,7 @@ router.get('/updateBooking/:id', async (req, res) => {
 //     }
 // }) // adding the movie and the booking
 
-router.post('/editBooking/:movieId', async (req, res) => {
+router.put('/editBooking/:movieId', async (req, res) => {
   try {
     const { date, time } = req.body;
     const movieId = req.params.movieId;

@@ -18,12 +18,12 @@
       <img src="<%= foundBooking.movie.image %>" alt="<%= foundBooking.movie.name %>" />
     </div>
 
-    <form action="/bookings/editBooking/<%= foundBooking.movie._id %>" method="POST">
+    <form action="/bookings/editBooking/<%= foundBooking.movie._id %>?_method=put" method="POST">
       <div class="update-date">
   <label for="date">Date:</label>
   <select name="date" class="form-select" required>
     <option value="">--Select Date--</option>
-    <% dateArray.forEach(option => { %>
+    <% dateArrayO.forEach(option => { %>
       <option value="<%= option %>" <%= foundBooking.date === option ? 'selected' : '' %>><%= option %></option>
     <% }) %>
   </select>
@@ -34,7 +34,7 @@
         <label for="time">Time:</label>
         <select name="time" class="form-select" required>
           <option value="">--Select Time--</option>
-          <% timeArray.forEach(option => { %>
+          <% timeArrayO.forEach(option => { %>
             <option value="<%= option %>" <%= foundBooking.time === option ? 'selected' : '' %>>
               <%= option %>
             </option>

@@ -25,7 +25,7 @@
       <label for="date">Select Date:</label>
       <select name="date" id="date" required >
         <option value="">--Select Date--</option>
-        <% dateArray.forEach(option => { %>
+        <% dateArrayO.forEach(option => { %>
       <option value="<%= option %>"><%= option %></option>
     <% }) %>
     
@@ -36,14 +36,9 @@
       <label for="time">Select Time:</label>
       <select name="time" id="time" required >
         <option value="">--Select Time--</option>
-        <% const timeArray = ['1:00 PM', '2:00 PM', '3:00 PM', '4:00 PM', '5:00 PM', '6:00 PM', '7:00 PM', '8:00 PM']%>
-                  <% const randomT = Math.floor(Math.random() * timeArray.length)%>
-                  <% for(let i = 0 ; i < 3 ; i++){ %>
-                    <% const randomTime= timeArray[randomT]%>
-                    <% const time = randomTime %>
-                    <option value="<%= time %>"><%=time%></option> 
-                    <% timeArray.splice(timeArray.indexOf(time),1) %>
-                  <%}%>
+        <% timeArrayO.forEach(option => { %>
+          <option value="<%= option %>"><%= option %></option>
+        <% }) %>
       </select>
 
               
