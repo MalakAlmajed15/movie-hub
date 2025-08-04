@@ -8,7 +8,7 @@ router.post('/home', async (req, res) => {
     try {
         res.redirect('/views/home.ejs')
     } catch (error) {
-        console.log(error)
+        console.error(error)
     }   
 })
 

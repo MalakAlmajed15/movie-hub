@@ -19,7 +19,6 @@
             <% allMovies.forEach(movie => { %>
                 <div class="movie-card">
                     <img src="<%=movie.image%>" alt="<%=movie.name%>">
-                    <% console.log(movie.image)%>
                     <h3 class="movie-title"><%= movie.name %></h3>
                     <a href="/movies/<%= movie._id %>" class="btn-details">More Details</a>
                 </div>

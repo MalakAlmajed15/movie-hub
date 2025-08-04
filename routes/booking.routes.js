@@ -7,13 +7,11 @@ const randomD = Math.floor(Math.random() * dateArrayO.length)
         for(let i = 0 ; i < 5 ; i++){
             const randomDate= dateArrayO[randomD]
             dateArrayO.splice(randomDate, 1)
-            console.log(dateArrayO)
         }
         const randomT = Math.floor(Math.random() * timeArrayO.length)
         for(let i = 0 ; i < 5 ; i++){
             const randomTime= timeArrayO[randomT]
             timeArrayO.splice(randomTime, 1)
-            console.log(timeArrayO)
         }
 
 
@@ -46,7 +44,7 @@ router.get('/bookingDetails', async (req, res) => {
         const foundBooking = await Booking.findById(req.params.id)
         res.render('bookings/bookingDetails.ejs',{foundBooking})
     } catch (error) {
-        console.log(error)
+        console.error(error)
     }
 })
 
@@ -92,7 +90,7 @@ router.get('/delete/:id', async (req, res) => {
         const deletedBooking = await Booking.findByIdAndDelete(req.params.id)
         res.redirect('/profile')
     } catch (error) {
-        console.log(error)
+        console.error(error)
     }
 })
 

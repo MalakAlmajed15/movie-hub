@@ -6,7 +6,7 @@ router.get('/allMovies', async (req, res) => {
         const allMovies = await Movie.find()
         res.render('movies/allMovies.ejs', {allMovies})
     } catch (error) {
-        console.log(error)
+        console.error(error)
     }
 })
 
@@ -15,7 +15,7 @@ router.get('/movieDetails', async (req, res) => {
         const foundMovie = await Movie.findById(req.params.id)
         res.render('movies/movieDetails.ejs', {foundMovie})
     } catch (error) {
-        console.log(error)
+        console.error(error)
     }
 })
 
