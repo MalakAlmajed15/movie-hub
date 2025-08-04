@@ -1,4 +1,3 @@
-/* === Reset & Base Styles === */
 * {
   margin: 0;
   padding: 0;
@@ -6,25 +5,23 @@
 }
 
 body {
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-family: "Lora", serif;
   background-color: #0b0c10;
   color: #f1f1f1;
   min-height: 100vh;
   line-height: 1.5;
 }
 
-/* === Page Title === */
 .page-title,
 .booking-title {
   text-align: center;
   color: #ff3c3c;
-  margin: 50px 0 30px;
+  /* margin: 50px 0 30px; */
   font-size: 2.6rem;
   font-weight: 700;
   letter-spacing: 1px;
 }
 
-/* === Buttons === */
 .confirm-btn,
 .update-btn {
   padding: 12px 16px;
@@ -37,6 +34,10 @@ body {
   font-size: 1rem;
   transition: background 0.3s ease;
   margin-top: 10px;
+  text-decoration: none;
+  text-align: center;
+  font-family: "Lora", serif;
+  font-size: 15px;
 }
 
 .confirm-btn:hover,
@@ -44,7 +45,6 @@ body {
   background: linear-gradient(to right, #d92a2a, #a52222);
 }
 
-/* === Back Link === */
 .back-btn {
   margin-top: 30px;
   text-align: center;
@@ -63,7 +63,6 @@ body {
   color: #ffffff;
 }
 
-/* === Form Input Styles === */
 input[type="date"],
 select,
 input[type="text"] {
@@ -91,46 +90,24 @@ label {
   display: block;
 }
 
-/* === Utility Container Class === */
 .container,
 .new-booking-container,
 .update-booking-container {
-  max-width: 1000px;
+  max-width: 700px;
   margin: 40px auto;
   background: #1c1f26;
-  padding: 40px;
+  /* padding: 40px; */
   border-radius: 16px;
   border: 1px solid #2e2e2e;
   box-shadow: 0 0 30px rgba(255, 60, 60, 0.05);
+  margin-bottom: 110px;
+
 }
 
-/* === Image Presentation === */
 .movie-photo img,
 .movie-poster img {
   width: 100%;
-  height: 320px;
-  object-fit: cover;
+  height: 400px;
+  object-fit: contain;
   border-radius: 10px;
-  border: 1px solid #444;
-  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.3);
-}
-
-/* === Responsive Adjustments === */
-@media (max-width: 768px) {
-  .page-title,
-  .booking-title {
-    font-size: 2rem;
-  }
-
-  .confirm-btn,
-  .update-btn {
-    width: 100%;
-  }
-
-  .container,
-  .new-booking-container,
-  .update-booking-container {
-    padding: 20px;
-    margin: 20px;
-  }
 }

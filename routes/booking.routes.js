@@ -6,6 +6,18 @@ const Movie = require('../models/Movie')
 router.get('/newBooking/:id', async (req,res) => {
     try {
         const movie = await Movie.findById(req.params.id)
+        const dateArray = ['10-08-2025', '11-08-2025', '12-08-2025', '13-08-2025', '14-08-2025', '15-08-2025', '16-08-2025', '17-08-2025']
+        const timeArray = ['1:00 PM', '2:00 PM', '3:00 PM', '4:00 PM', '5:00 PM', '6:00 PM', '7:00 PM', '8:00 PM']
+        res.locals.dateArray = dateArray
+        res.locals.timeArray = timeArray
+        const randomD = Math.floor(Math.random() * dateArray.length)
+        for(let i = 0 ; i < 3 ; i++){
+            const randomDate= dateArray[randomD]
+            const date = randomDate
+            dateArray.splice(randomD, 1)
+            res.locals.date = date
+        }
+        console.log(dateArray)
         res.render('bookings/newBooking', {movie})
     } catch (error) {
         console.error(error)

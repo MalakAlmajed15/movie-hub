@@ -25,14 +25,9 @@
       <label for="date">Select Date:</label>
       <select name="date" id="date" required >
         <option value="">--Select Date--</option>
-        <% const dateArray = ['10-08-2025', '11-08-2025', '12-08-2025', '13-08-2025', '14-08-2025', '15-08-2025', '16-08-2025', '17-08-2025']%>
-          <% const randomD = Math.floor(Math.random() * dateArray.length)%>
-          <% for(let i = 0 ; i < 3 ; i++){ %>
-            <% const randomDate= dateArray[randomD]%>
-            <% const date = randomDate %>
-            <option value="<%=date%>"><%=date%></option> 
-            <% dateArray.splice(dateArray.indexOf(date),1) %>
-          <%}%>
+        <% dateArray.forEach(option => { %>
+      <option value="<%= option %>"><%= option %></option>
+    <% }) %>
     
       </select>
       </div>
