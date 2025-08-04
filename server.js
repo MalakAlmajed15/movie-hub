@@ -14,8 +14,6 @@ const movieRoutes = require('./routes/movie.routes')
 const bookingRoutes = require('./routes/booking.routes')
 const profileRoutes = require('./routes/profile.routes')
 
-// Pushing comment
-
 app.use(express.static('public'))
 app.use(express.urlencoded({extended: true}))
 app.use(methodOverride('_method'))
