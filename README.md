@@ -20,7 +20,7 @@ It also served as a capstone for practicing Express, MongoDB, and user-centered 
 
 ## 🚀 Getting Started
 
-* 🌐 [Website Link](https://movie-hub-1r96.onrender.com)
+* 🌐 [Website Link](https://movie-hub-1r96.onrender.com/home)
 * 📂 [Planning Materials](https://github.com/user-attachments/files/21582686/Project.2.Plan.docx)
 
 ---
