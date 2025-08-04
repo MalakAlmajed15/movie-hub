@@ -29,7 +29,7 @@ It also served as a capstone for practicing Express, MongoDB, and user-centered 
 
 <img width="1919" height="942" alt="Image" src="https://github.com/user-attachments/assets/7019fb67-2f55-4316-84f6-6b2c49c03c2f" />
 
-
+<img width="1894" height="945" alt="Image" src="https://github.com/user-attachments/assets/4121a36c-be74-4c8e-b467-f99579c9f130" />
 ---
 
 ## 🛠️ Technologies Used
